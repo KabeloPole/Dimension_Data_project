@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyMVCProject.Controllers
 {
-    public class ManagerController : Controller
+    public class EmployeeController : Controller
     {
 
-        [Authorize(Roles="Manager")]
+        [Authorize(Roles="Employee")]
         public IActionResult Index()
         {
             return View();

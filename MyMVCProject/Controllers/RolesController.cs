@@ -18,8 +18,8 @@ namespace MyMVCProject.Controllers
         }
         public IActionResult Index()
         {
-            var role = _roleManager.Roles.ToList();
-            return View(role);
+            var roles = _roleManager.Roles.ToList();
+            return View(roles);
         }
 
         public IActionResult Create()

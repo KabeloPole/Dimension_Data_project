@@ -420,7 +420,8 @@ C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVC
 C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVCProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Error.cshtml.g.cs
 C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVCProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVCProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
-C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVCProject\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
-C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVCProject\obj\Debug\netcoreapp3.1\Razor\Views\Manager\Index.cshtml.g.cs
 C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVCProject\obj\Debug\netcoreapp3.1\Razor\Views\Roles\Index.cshtml.g.cs
 C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVCProject\obj\Debug\netcoreapp3.1\Razor\Views\Roles\Create.cshtml.g.cs
+C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVCProject\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVCProject\obj\Debug\netcoreapp3.1\Razor\Views\Manager\Index.cshtml.g.cs
+C:\Users\Hp Pc\source\repos\MyMVCProject\KabeloPole\Dimension_Data_project\MyMVCProject\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Index.cshtml.g.cs
