@@ -32,10 +32,21 @@ namespace MyMVCProject
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
+                .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddDbContext<DimensionDatasetContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddRazorPages();
+
+            //Adding role policies
+            services.AddAuthorization(options => {
+                options.AddPolicy("readpolicy",
+                    builder => builder.RequireRole("Admin", "Manager", "Employee"));
+                options.AddPolicy("writepolicy",
+                    builder => builder.RequireRole("Admin", "Manager"));
+                options.AddPolicy("usermanagepolicy",
+                    builder => builder.RequireRole("Admin"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

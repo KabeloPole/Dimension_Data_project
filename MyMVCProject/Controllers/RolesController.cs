@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyMVCProject.Controllers
 {
+    [Authorize(Policy = "usermanagepolicy")]
     public class RolesController : Controller
     {
 
@@ -16,6 +18,7 @@ namespace MyMVCProject.Controllers
         {
             _roleManager = roleManager;
         }
+
         public IActionResult Index()
         {
             var roles = _roleManager.Roles.ToList();

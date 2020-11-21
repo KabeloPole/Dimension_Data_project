@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyMVCProject.Data;
@@ -11,28 +12,26 @@ using MyMVCProject.Models;
 
 namespace MyMVCProject.Controllers
 {
-    public class DimensionDatasetsController : Controller
+    public class AccountController : Controller
     {
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly DimensionDatasetContext _context;
 
-        public DimensionDatasetsController(DimensionDatasetContext context)
+        public AccountController(DimensionDatasetContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        // GET: DimensionDatasets
-       [Authorize(Policy = "readpolicy")]
-       // [Authorize(Roles = "Admin")]
-       // [Authorize(Roles = "Manager")]
        // [Authorize(Roles = "Employee")]
-        public async Task<IActionResult> Index()
+       // [Authorize(Policy = "readpolicy")]
+        public async Task <IActionResult> Index()
         {
             return View(await _context.DimensionDataset.ToListAsync());
         }
 
-        // GET: DimensionDatasets/Details/5
-        [Authorize(Policy = "readpolicy")]
-       // [Authorize(Roles = "Admin")]
+       // [Authorize(Policy = "readpolicy")]
+       //// [Authorize(Roles = "Admin")]
        // [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Details(string id)
         {
@@ -51,22 +50,14 @@ namespace MyMVCProject.Controllers
             return View(dimensionDataset);
         }
 
-        // GET: DimensionDatasets/Create
-        [Authorize(Policy = "writepolicy")]
-       // [Authorize(Roles = "Admin")]
-       // [Authorize(Roles = "Manager")]
+        
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: DimensionDatasets/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Policy = "writepolicy")]
-      //  [Authorize(Roles = "Admin")]
+       // [Authorize(Policy = "writepolicy")]
+       // [Authorize(Roles = "Admin")]
        // [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Create([Bind("Age,Attrition,BusinessTravel,DailyRate,Department,DistanceFromHome,Education,EducationField,EmployeeCount,EmployeeNumber,EnvironmentSatisfaction,Gender,HourlyRate,JobInvolvement,JobLevel,JobRole,JobSatisfaction,MaritalStatus,MonthlyIncome,MonthlyRate,NumCompaniesWorked,Over18,OverTime,PercentSalaryHike,PerformanceRating,RelationshipSatisfaction,StandardHours,StockOptionLevel,TotalWorkingYears,TrainingTimesLastYear,WorkLifeBalance,YearsAtCompany,YearsInCurrentRole,YearsSinceLastPromotion,YearsWithCurrManager")] DimensionDataset dimensionDataset)
         {
@@ -79,10 +70,8 @@ namespace MyMVCProject.Controllers
             return View(dimensionDataset);
         }
 
-        // GET: DimensionDatasets/Edit/5
-
-        [Authorize(Policy = "writepolicy")]
-       // [Authorize(Roles = "Admin")]
+       // [Authorize(Policy = "writepolicy")]
+      //  [Authorize(Roles = "Admin")]
        // [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(string id)
         {
@@ -99,48 +88,9 @@ namespace MyMVCProject.Controllers
             return View(dimensionDataset);
         }
 
-        // POST: DimensionDatasets/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Policy = "writepolicy")]
+       // [Authorize(Policy = "writepolicy")]
        // [Authorize(Roles = "Admin")]
-       // [Authorize(Roles = "Manager")]
-        public async Task<IActionResult> Edit(string id, [Bind("Age,Attrition,BusinessTravel,DailyRate,Department,DistanceFromHome,Education,EducationField,EmployeeCount,EmployeeNumber,EnvironmentSatisfaction,Gender,HourlyRate,JobInvolvement,JobLevel,JobRole,JobSatisfaction,MaritalStatus,MonthlyIncome,MonthlyRate,NumCompaniesWorked,Over18,OverTime,PercentSalaryHike,PerformanceRating,RelationshipSatisfaction,StandardHours,StockOptionLevel,TotalWorkingYears,TrainingTimesLastYear,WorkLifeBalance,YearsAtCompany,YearsInCurrentRole,YearsSinceLastPromotion,YearsWithCurrManager")] DimensionDataset dimensionDataset)
-        {
-            if (id != dimensionDataset.EmployeeNumber)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(dimensionDataset);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!DimensionDatasetExists(dimensionDataset.EmployeeNumber))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(dimensionDataset);
-        }
-
-        // GET: DimensionDatasets/Delete/5
-        [Authorize(Policy = "writepolicy")]
-       // [Authorize(Roles = "Admin")]
-       // [Authorize(Roles = "Manager")]
+      //  [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -158,10 +108,9 @@ namespace MyMVCProject.Controllers
             return View(dimensionDataset);
         }
 
-        // POST: DimensionDatasets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "writepolicy")]
+       // [Authorize(Policy = "writepolicy")]
        // [Authorize(Roles = "Admin")]
        // [Authorize(Roles = "Manager")]
         public async Task<IActionResult> DeleteConfirmed(string id)
@@ -171,7 +120,6 @@ namespace MyMVCProject.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool DimensionDatasetExists(string id)
         {
             return _context.DimensionDataset.Any(e => e.EmployeeNumber == id);
