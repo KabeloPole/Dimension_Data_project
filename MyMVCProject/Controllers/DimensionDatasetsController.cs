@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyMVCProject.Data;
 using MyMVCProject.Models;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MyMVCProject.Controllers
 {
